@@ -14,9 +14,15 @@ export default async function handler(req, res) {
     );
 
     const data = await response.text();
+
+    if (!response.ok) {
+      console.error('Webhook failed:', response.status, data);
+      return res.status(502).json({ error: `Webhook returned ${response.status}` });
+    }
+
     res.status(200).json({ success: true, data });
   } catch (error) {
     console.error('Webhook error:', error);
-    res.status(500).json({ error: 'Failed to send data' });
+    res.status(500).json({ error: 'Failed to reach webhook' });
   }
 }

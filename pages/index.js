@@ -121,20 +121,30 @@ export default function ProperAIWebsite() {
             onSubmit={async (e) => {
               e.preventDefault();
               const form = e.currentTarget;
-              
-await fetch("/api/call", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    name: form.name.value,
-    phone: form.phone.value,
-    business: form.business.value,
-    email: form.email.value,
-  }),
-});
 
-              form.reset();
-              alert("Your AI is calling you now.");
+              try {
+                const res = await fetch("/api/call", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    name: form.name.value,
+                    phone: form.phone.value,
+                    business: form.business.value,
+                    email: form.email.value,
+                  }),
+                });
+
+                if (!res.ok) {
+                  const err = await res.json();
+                  alert("Something went wrong — please try again. (" + (err.error || res.status) + ")");
+                  return;
+                }
+
+                form.reset();
+                alert("Your AI is calling you now.");
+              } catch {
+                alert("Could not connect — please check your internet and try again.");
+              }
             }}
           >
             <input name="name" required placeholder="Your name" className="input-dark" />
