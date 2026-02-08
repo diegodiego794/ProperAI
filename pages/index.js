@@ -121,20 +121,17 @@ export default function ProperAIWebsite() {
             onSubmit={async (e) => {
               e.preventDefault();
               const form = e.currentTarget;
-
-              await fetch(
-                "https://diegofreitas.app.n8n.cloud/webhook/52d8a728-aef7-44be-a2de-014de00ffb0c",
-                {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    name: form.name.value,
-                    phone: form.phone.value,
-                    business: form.business.value,
-                    email: form.email.value,
-                  }),
-                }
-              );
+              
+await fetch("/api/call", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    name: form.name.value,
+    phone: form.phone.value,
+    business: form.business.value,
+    email: form.email.value,
+  }),
+});
 
               form.reset();
               alert("Your AI is calling you now.");
