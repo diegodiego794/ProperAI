@@ -22,7 +22,7 @@ function useFadeIn() {
 
 export default function ProperAIWebsite() {
   const scrollToCall = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("showcase")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const scrollToDemo = () => {
