@@ -230,7 +230,7 @@ export default function ProperAIWebsite() {
               <input placeholder="Phone number" className="input-dark" />
               <input placeholder="Business name" className="input-dark" />
               <input placeholder="Email address" className="input-dark" />
-              <textarea placeholder="Notes" rows={4} className="input-dark" />
+              <textarea placeholder="Notes" rows={4} className="input-dark rounded-none" />
               <button className="rounded-full bg-neutral-100 text-neutral-900 px-10 py-4 text-base font-medium">
                 Schedule Demo
               </button>
