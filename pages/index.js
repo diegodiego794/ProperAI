@@ -172,7 +172,8 @@ export default function ProperAIWebsite() {
           <div className="mt-20 max-w-md mx-auto">
             <PriceCard
               title="Proper AI"
-              price="£349/mo"
+              price="£399/mo"
+              setupFee="£300 one-off setup fee"
               items={[
                 "Includes 600 minutes per month",
                 "Answers calls and provides info/links",
@@ -240,7 +241,12 @@ export default function ProperAIWebsite() {
 
       {/* Footer */}
       <footer className="border-t border-neutral-700 py-10 text-center text-sm text-neutral-500">
-        © {new Date().getFullYear()} Proper AI
+        <p>© {new Date().getFullYear()} Proper AI</p>
+        <p className="mt-2">
+          <a href="tel:07412939339" className="hover:text-neutral-300 transition">07412939339</a>
+          {" · "}
+          <a href="mailto:diego@properai.co.uk" className="hover:text-neutral-300 transition">diego@properai.co.uk</a>
+        </p>
       </footer>
     </div>
   );
@@ -268,10 +274,11 @@ const UseCase = ({ title, text }) => (
   </div>
 );
 
-const PriceCard = ({ title, price, items }) => (
+const PriceCard = ({ title, price, setupFee, items }) => (
   <div className="rounded-3xl p-12 bg-neutral-100 text-neutral-900">
     <h3 className="text-xl font-medium">{title}</h3>
-    <div className="mt-6 text-4xl font-semibold">{price}</div>
+    {setupFee && <p className="mt-4 text-sm text-neutral-500">{setupFee}</p>}
+    <div className="mt-2 text-4xl font-semibold">{price}</div>
     <ul className="mt-8 space-y-3">
       {items.map((i) => (
         <li key={i}>• {i}</li>
